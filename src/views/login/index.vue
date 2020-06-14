@@ -51,6 +51,7 @@
         <el-input
           ref="username"
           v-model="loginForm.code"
+          oninput="if(value.length>5)value=value.slice(0,5)"
           placeholder="验证码"
           name="username"
           type="text"

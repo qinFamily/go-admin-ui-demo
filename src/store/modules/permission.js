@@ -129,7 +129,7 @@ const actions = {
         } else {
           data = response.data
           Object.assign(loadMenuData, data)
-
+          console.log(data)
           generaMenu(asyncRoutes, loadMenuData)
           asyncRoutes.push({ path: '*', redirect: '/404', hidden: true })
           commit('SET_ROUTES', asyncRoutes)

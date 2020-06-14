@@ -44,7 +44,7 @@
           <svg-icon :icon-class="scope.row.icon" />
         </template>
       </el-table-column>
-      <el-table-column prop="sort" label="排序" width="60px" />
+      <el-table-column prop="sort" label="排序" width="60px" sortable />
       <el-table-column prop="permission" label="权限标识" :show-overflow-tooltip="true" />
       <el-table-column prop="path" label="路径" :show-overflow-tooltip="true">
         <template slot-scope="scope">
