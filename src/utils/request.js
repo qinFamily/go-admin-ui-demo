@@ -81,7 +81,7 @@ service.interceptors.response.use(
         type: 'error',
         duration: 5 * 1000
       })
-    } else if (code !== 200) {
+    } else if (code !== 200 && code !== 20000) {
       Notification.error({
         title: response.data.msg
       })

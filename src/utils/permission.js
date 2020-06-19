@@ -23,3 +23,31 @@ export default function checkPermission(value) {
     return false
   }
 }
+
+/**
+ * @param {Array} arr ['add','del','view','update']
+ * @param {String} value 'add'
+ * @returns {Boolean}
+ * @example see @/views/permission/directive.vue
+ */
+export function checkAuth(arr, value) {
+  const permissionarr = arr
+  const permissionvalue = value
+  const hasPermission = permissionarr.includes(permissionvalue)
+  if (!hasPermission) {
+    return false
+  }
+  return true
+}
+export function checkAuthAdd(arr) {
+  return checkAuth(arr, 'add')
+}
+export function checkAuthDel(arr) {
+  return checkAuth(arr, 'del')
+}
+export function checkAuthView(arr) {
+  return checkAuth(arr, 'view')
+}
+export function checkAuthUpdate(arr) {
+  return checkAuth(arr, 'update')
+}

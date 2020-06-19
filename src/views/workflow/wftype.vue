@@ -165,6 +165,7 @@ export default {
       auth
         .requestMenuButton('wfset')
         .then(response => {
+          // console.log("this.operationList response", response)
           this.operationList = response.results
         })
         .then(() => {
@@ -174,6 +175,7 @@ export default {
     getList() {
       this.listLoading = true
       workflowtype.requestGet(this.listQuery).then(response => {
+        // console.log("this.list response", response)
         this.list = response.results
         this.total = response.count
         this.listLoading = false

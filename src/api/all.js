@@ -16,11 +16,11 @@ export const audit = new Request('/tool/audit/')
 export const simple = new Request('/tool/simple/')
 
 // workflows
-export const workflowtype = new Request('/workflow/workflowtype/')
-export const workflow = new Request('/workflow/workflow/')
-export const state = new Request('/workflow/state/')
-export const transition = new Request('/workflow/transition/')
-export const customfield = new Request('/workflow/customfield/')
+export const workflowtype = new Request('/api/v1/workflow/workflowtype')
+export const workflow = new Request('/api/v1/workflow/workflow')
+export const state = new Request('/api/v1/workflow/state/')
+export const transition = new Request('/api/v1/workflow/transition/')
+export const customfield = new Request('/api/v1/workflow/customfield/')
 
 // tickets
 export const ticket = new Request('/ticket/ticket/')

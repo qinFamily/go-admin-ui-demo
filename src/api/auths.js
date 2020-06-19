@@ -17,7 +17,7 @@ export function getInfo() {
 
 export function requestMenuButton(menucode) {
   return request({
-    url: '/sys/auth/getmenubutons/',
+    url: '/api/v1/sys/auth/getmenubutons',
     method: 'get',
     params: { menucode }
   })

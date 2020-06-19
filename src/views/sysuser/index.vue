@@ -102,11 +102,7 @@
           </el-col>
         </el-row>
 
-        <el-table
-          v-loading="loading"
-          :data="userList"
-          @selection-change="handleSelectionChange"
-        >
+        <el-table v-loading="loading" :data="userList" @selection-change="handleSelectionChange">
           <el-table-column type="selection" width="45" align="center" />
           <el-table-column label="编号" width="50" align="center" prop="userId" />
           <el-table-column label="用户名称" align="center" prop="username" :show-overflow-tooltip="true" />
@@ -437,6 +433,7 @@ export default {
     getList() {
       this.loading = true
       listUser(this.addDateRange(this.queryParams, this.dateRange)).then(response => {
+        // console.log("getList response", response)
         this.userList = response.data.list
         this.total = response.data.count
         this.loading = false
@@ -446,6 +443,7 @@ export default {
     /** 查询部门下拉树结构 */
     getTreeselect() {
       treeselect().then(response => {
+        // console.log("treeselect response", response)
         this.deptOptions = response.data
       })
     },
