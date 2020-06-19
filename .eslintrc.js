@@ -184,7 +184,7 @@ module.exports = {
     "no-unreachable": 2,
     "no-unsafe-finally": 2,
     "no-unused-vars": [
-      "error",
+      2,
       {
         vars: "local",
         args: "none"

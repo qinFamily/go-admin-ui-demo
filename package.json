@@ -23,6 +23,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,vue}": [
+      "eslint --fix",
       "git add"
     ]
   },
@@ -119,5 +120,13 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "rules":{
+    "generator-star-spacing": "off",
+    "no-tabs":"off",
+    "no-unused-vars":"off",
+    "no-console":"off",
+    "no-irregular-whitespace":"off",
+    "no-debugger": "off"
+  }
 }
