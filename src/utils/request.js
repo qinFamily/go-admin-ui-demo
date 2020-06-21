@@ -45,6 +45,7 @@ service.interceptors.response.use(
   response => {
     const code = response.data.code
     if (code === 401) {
+      // console.log(response.data)
       store.dispatch('user/resetToken')
       if (location.href.indexOf('login') !== -1) {
         location.reload() // 为了重新实例化vue-router对象 避免bug
@@ -62,6 +63,7 @@ service.interceptors.response.use(
         })
       }
     } else if (code === 6401) {
+      // console.log(response.data)
       store.dispatch('user/resetToken')
       MessageBox.confirm(
         '登录状态已过期，您可以继续留在该页面，或者重新登录',
@@ -76,12 +78,14 @@ service.interceptors.response.use(
       })
       return false
     } else if (code === 400 || code === 403) {
+      // console.log(response.data)
       Message({
         message: response.data.msg,
         type: 'error',
         duration: 5 * 1000
       })
     } else if (code !== 200 && code !== 20000) {
+      // console.log(response.data)
       Notification.error({
         title: response.data.msg
       })

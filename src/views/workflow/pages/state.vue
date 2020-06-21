@@ -126,7 +126,7 @@
             v-model="temp.fields"
             filterable
             :titles="['未选择', '已选择']"
-            :data="customfield_list"
+            :data="customfieldList"
             :props="permprops"
           />
         </el-form-item>
@@ -160,15 +160,15 @@ export default {
   props: {
     wfdata: {
       type: Object,
-      default: {}
+      default: () => { }
     },
     list: {
       type: Array,
-      default: []
+      default: () => []
     },
     customfieldList: {
       type: Array,
-      default: []
+      default: () => []
     }
   },
 
