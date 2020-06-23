@@ -1,9 +1,16 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable no-use-v-if-with-v-for */
 <template>
   <div class="app-container">
     <el-card>
       <el-steps>
-        <el-step v-for="item in state_list" v-if="!item.is_hidden" :key="item.id" status="finish" :title="item.name" />
+        <el-step
+          v-for="item in state_list"
+          v-if="!item.is_hidden"
+          :key="item.id"
+          status="finish"
+          :title="item.name"
+        />
       </el-steps>
     </el-card>
 

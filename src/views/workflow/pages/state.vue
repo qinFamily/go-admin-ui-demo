@@ -95,9 +95,9 @@
           <el-select v-model="temp.user_participant" multiple filterable placeholder="请选择">
             <el-option
               v-for="item in choice_user_list"
-              :key="item.id"
+              :key="item.userId"
               :label="item.username"
-              :value="item.id"
+              :value="item.userId"
             />
           </el-select>
         </el-form-item>
@@ -105,9 +105,9 @@
           <el-select v-model="temp.group_participant" multiple filterable placeholder="请选择">
             <el-option
               v-for="item in choice_group_list"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id"
+              :key="item.deptId"
+              :label="item.deptName"
+              :value="item.deptId"
             />
           </el-select>
         </el-form-item>
@@ -115,9 +115,9 @@
           <el-select v-model="temp.role_participant" multiple filterable placeholder="请选择">
             <el-option
               v-for="item in choice_role_list"
-              :key="item.id"
-              :label="item.name"
-              :value="item.id"
+              :key="item.roleId"
+              :label="item.roleName"
+              :value="item.roleId"
             />
           </el-select>
         </el-form-item>
@@ -234,7 +234,7 @@ export default {
           this.checkPermission()
         })
     },
-    handleFilter() {},
+    handleFilter() { },
     resetTemp() {
       this.temp = {
         memo: '',
@@ -285,7 +285,7 @@ export default {
               })
               this.$emit('checkdata')
             })
-            .catch(() => {})
+            .catch(() => { })
         }
       })
     },
@@ -312,7 +312,7 @@ export default {
               })
               this.$emit('checkdata')
             })
-            .catch(() => {})
+            .catch(() => { })
         }
       })
     },

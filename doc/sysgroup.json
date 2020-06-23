@@ -1,0 +1,190 @@
+{
+    "results":[
+        {
+            "id":1,
+            "user_set":[
+                {
+                    "id":1,
+                    "last_login":null,
+                    "create_time":"2020-06-13 14:07:12",
+                    "update_time":"2020-06-13 14:07:12",
+                    "memo":"",
+                    "username":"admin",
+                    "realname":"图书馆管理员",
+                    "email":"itimor@126.com",
+                    "avatar":"http://m.imeitou.com/uploads/allimg/2017110610/b3c433vwhsk.jpg",
+                    "status":true,
+                    "is_admin":true,
+                    "group":1,
+                    "roles":[
+                        1],
+                    "model_perms":[
+                    ]
+                }],
+            "name":"top",
+            "create_time":"2020-06-13 14:07:11",
+            "update_time":"2020-06-13 14:07:11",
+            "memo":"",
+            "code":"top",
+            "sequence":0,
+            "parent":null,
+            "permissions":[
+            ],
+            "roles":[
+                1]
+        },
+        {
+            "id":2,
+            "user_set":[
+                {
+                    "id":2,
+                    "last_login":null,
+                    "create_time":"2020-06-13 14:07:57",
+                    "update_time":"2020-06-13 14:07:57",
+                    "memo":"",
+                    "username":"ops_tl",
+                    "realname":"青龙",
+                    "email":"itimor@126.com",
+                    "avatar":"http://m.imeitou.com/uploads/allimg/2017110610/b3c433vwhsk.jpg",
+                    "status":true,
+                    "is_admin":false,
+                    "group":2,
+                    "roles":[
+                        2],
+                    "model_perms":[
+                    ]
+                },
+                {
+                    "id":3,
+                    "last_login":null,
+                    "create_time":"2020-06-13 14:07:57",
+                    "update_time":"2020-06-13 14:07:57",
+                    "memo":"",
+                    "username":"ops",
+                    "realname":"白虎",
+                    "email":"itimor@126.com",
+                    "avatar":"http://m.imeitou.com/uploads/allimg/2017110610/b3c433vwhsk.jpg",
+                    "status":true,
+                    "is_admin":false,
+                    "group":2,
+                    "roles":[
+                        3],
+                    "model_perms":[
+                    ]
+                }],
+            "name":"运维",
+            "create_time":"2020-06-13 14:07:55",
+            "update_time":"2020-06-13 14:07:55",
+            "memo":"",
+            "code":"ops",
+            "sequence":1,
+            "parent":1,
+            "permissions":[
+            ],
+            "roles":[
+            ]
+        },
+        {
+            "id":3,
+            "user_set":[
+                {
+                    "id":4,
+                    "last_login":null,
+                    "create_time":"2020-06-13 14:07:58",
+                    "update_time":"2020-06-13 14:07:58",
+                    "memo":"",
+                    "username":"dev_tl",
+                    "realname":"朱雀",
+                    "email":"itimor@126.com",
+                    "avatar":"http://m.imeitou.com/uploads/allimg/2017110610/b3c433vwhsk.jpg",
+                    "status":true,
+                    "is_admin":false,
+                    "group":3,
+                    "roles":[
+                        4],
+                    "model_perms":[
+                    ]
+                },
+                {
+                    "id":5,
+                    "last_login":null,
+                    "create_time":"2020-06-13 14:07:58",
+                    "update_time":"2020-06-13 14:07:58",
+                    "memo":"",
+                    "username":"dev",
+                    "realname":"玄武",
+                    "email":"itimor@126.com",
+                    "avatar":"http://m.imeitou.com/uploads/allimg/2017110610/b3c433vwhsk.jpg",
+                    "status":true,
+                    "is_admin":false,
+                    "group":3,
+                    "roles":[
+                        5],
+                    "model_perms":[
+                    ]
+                }],
+            "name":"开发",
+            "create_time":"2020-06-13 14:07:55",
+            "update_time":"2020-06-13 14:07:55",
+            "memo":"",
+            "code":"dev",
+            "sequence":2,
+            "parent":1,
+            "permissions":[
+            ],
+            "roles":[
+            ]
+        },
+        {
+            "id":4,
+            "user_set":[
+                {
+                    "id":6,
+                    "last_login":null,
+                    "create_time":"2020-06-13 14:07:59",
+                    "update_time":"2020-06-13 14:07:59",
+                    "memo":"",
+                    "username":"hr_tl",
+                    "realname":"霸下",
+                    "email":"itimor@126.com",
+                    "avatar":"http://m.imeitou.com/uploads/allimg/2017110610/b3c433vwhsk.jpg",
+                    "status":true,
+                    "is_admin":false,
+                    "group":4,
+                    "roles":[
+                        6],
+                    "model_perms":[
+                    ]
+                },
+                {
+                    "id":7,
+                    "last_login":null,
+                    "create_time":"2020-06-13 14:07:59",
+                    "update_time":"2020-06-13 14:07:59",
+                    "memo":"",
+                    "username":"hr",
+                    "realname":"青鸾",
+                    "email":"itimor@126.com",
+                    "avatar":"http://m.imeitou.com/uploads/allimg/2017110610/b3c433vwhsk.jpg",
+                    "status":true,
+                    "is_admin":false,
+                    "group":4,
+                    "roles":[
+                        7],
+                    "model_perms":[
+                    ]
+                }],
+            "name":"人事",
+            "create_time":"2020-06-13 14:07:55",
+            "update_time":"2020-06-13 14:07:55",
+            "memo":"",
+            "code":"hr",
+            "sequence":3,
+            "parent":1,
+            "permissions":[
+            ],
+            "roles":[
+            ]
+        }],
+    "code":20000
+}

@@ -6,6 +6,10 @@
 
     <div class="right-menu">
       <template v-if="device!=='mobile'">
+        <div class="right-menu-item">
+          <a class="ip">{{ip}}</a>
+          <a class="date">{{cur_date}}</a>
+        </div>
         <search id="header-search" class="right-menu-item" />
 
         <error-log class="errLog-container right-menu-item hover-effect" />
@@ -14,19 +18,20 @@
           <go-admin-git id="go-admin-git" class="right-menu-item hover-effect" />
         </el-tooltip>
 
-        <el-tooltip content="文档地址" effect="dark" placement="bottom">
+        <!-- <el-tooltip content="文档地址" effect="dark" placement="bottom">
           <go-admin-doc id="go-admin-doc" class="right-menu-item hover-effect" />
-        </el-tooltip>
+        </el-tooltip> -->
 
-        <el-tooltip content="打赏" effect="dark" placement="bottom">
+        <!-- <el-tooltip content="打赏" effect="dark" placement="bottom">
           <go-admin-donate id="go-admin-donatet" class="right-menu-item hover-effect" />
-        </el-tooltip>
+        </el-tooltip> -->
 
         <screenfull id="screenfull" class="right-menu-item hover-effect" />
 
         <el-tooltip content="Global Size" effect="dark" placement="bottom">
           <size-select id="size-select" class="right-menu-item hover-effect" />
         </el-tooltip>
+        <!-- <lang-select class="right-menu-item hover-effect" /> -->
 
       </template>
 
@@ -39,13 +44,13 @@
           <router-link to="/profile/index">
             <el-dropdown-item>个人中心</el-dropdown-item>
           </router-link>
-          <a target="_blank" href="https://github.com/wenjianzhang/go-admin">
+          <a target="_blank" href="https://github.com/qinFamily/go-admin">
             <el-dropdown-item>Github go-admin</el-dropdown-item>
           </a>
-          <a target="_blank" href="https://github.com/wenjianzhang/go-admin-ui">
+          <a target="_blank" href="https://github.com/qinFamily/go-admin-ui">
             <el-dropdown-item>Github go-admin-ui</el-dropdown-item>
           </a>
-          <a target="_blank" href="https://github.com/wenjianzhang/go-admin/wiki">
+          <a target="_blank" href="https://github.com/qinFamily/go-admin/wiki">
             <el-dropdown-item>文档</el-dropdown-item>
           </a>
           <el-dropdown-item divided>
@@ -81,12 +86,26 @@ export default {
     GoAdminDoc,
     GoAdminDonate
   },
+  data() {
+    return {
+      cur_date: ''
+    }
+  },
   computed: {
     ...mapGetters([
       'sidebar',
       'avatar',
-      'device'
+      'device',
+      'ip',
+      'name'
     ])
+  },
+
+  mounted() {
+    var _this = this // 声明一个变量指向vue实例this,保证作用域一致
+    this.timer = setInterval(function() {
+      _this.cur_date = new Date().toLocaleString() // 修改数据date
+    }, 1000)
   },
   methods: {
     toggleSideBar() {
@@ -153,6 +172,14 @@ export default {
       font-size: 18px;
       color: #5a5e66;
       vertical-align: text-bottom;
+
+      .ip {
+        color: #39b3d1;
+      }
+
+      .date {
+        color: #d39011;
+      }
 
       &.hover-effect {
         cursor: pointer;

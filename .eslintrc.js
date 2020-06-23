@@ -272,7 +272,7 @@ module.exports = {
     ],
     "array-bracket-spacing": [2, "never"],
     "vue/no-use-v-if-with-v-for": [
-      "error",
+      "2",
       {
         allowUsingIterationVar: true
       }

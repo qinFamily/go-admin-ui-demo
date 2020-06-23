@@ -9,7 +9,8 @@ const state = {
   introduction: '',
   roles: [],
   permissions: [],
-  permisaction: []
+  permisaction: [],
+  ip: ''
 }
 
 const mutations = {
@@ -34,6 +35,9 @@ const mutations = {
   },
   SET_PERMISSIONS: (state, permisaction) => {
     state.permisaction = permisaction
+  },
+  SET_IP: (state, ip) => {
+    state.ip = ip
   }
 }
 
@@ -61,8 +65,8 @@ const actions = {
           removeToken()
           resolve()
         }
-
-        const { roles, name, avatar, introduction, permissions } = response.data
+        console.log(response.data)
+        const { roles, name, avatar, introduction, permissions, ip } = response.data
 
         // roles must be a non-empty array
         if (!roles || roles.length <= 0) {
@@ -73,6 +77,7 @@ const actions = {
         commit('SET_NAME', name)
         commit('SET_AVATAR', avatar)
         commit('SET_INTRODUCTION', introduction)
+        commit('SET_IP', ip)
         resolve(response)
       }).catch(error => {
         reject(error)

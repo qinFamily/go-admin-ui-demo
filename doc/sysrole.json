@@ -1,0 +1,102 @@
+{
+    "results":[
+        {
+            "id":1,
+            "create_time":"2020-06-13 14:07:11",
+            "update_time":"2020-06-13 14:07:11",
+            "memo":"",
+            "name":"top",
+            "code":"top",
+            "sequence":0,
+            "parent":null,
+            "menus":[
+            ],
+            "model_perms":[
+            ]
+        },
+        {
+            "id":2,
+            "create_time":"2020-06-13 14:07:56",
+            "update_time":"2020-06-13 14:07:56",
+            "memo":"",
+            "name":"运维经理",
+            "code":"ops_tl",
+            "sequence":1,
+            "parent":1,
+            "menus":[
+            ],
+            "model_perms":[
+            ]
+        },
+        {
+            "id":3,
+            "create_time":"2020-06-13 14:07:56",
+            "update_time":"2020-06-13 14:07:56",
+            "memo":"",
+            "name":"运维",
+            "code":"ops",
+            "sequence":1,
+            "parent":2,
+            "menus":[
+            ],
+            "model_perms":[
+            ]
+        },
+        {
+            "id":4,
+            "create_time":"2020-06-13 14:07:56",
+            "update_time":"2020-06-13 14:07:56",
+            "memo":"",
+            "name":"开发经理",
+            "code":"dev_tl",
+            "sequence":2,
+            "parent":1,
+            "menus":[
+            ],
+            "model_perms":[
+            ]
+        },
+        {
+            "id":5,
+            "create_time":"2020-06-13 14:07:56",
+            "update_time":"2020-06-13 14:07:56",
+            "memo":"",
+            "name":"开发",
+            "code":"dev",
+            "sequence":2,
+            "parent":4,
+            "menus":[
+            ],
+            "model_perms":[
+            ]
+        },
+        {
+            "id":6,
+            "create_time":"2020-06-13 14:07:56",
+            "update_time":"2020-06-13 14:07:56",
+            "memo":"",
+            "name":"人事经理",
+            "code":"hr_tl",
+            "sequence":3,
+            "parent":1,
+            "menus":[
+            ],
+            "model_perms":[
+            ]
+        },
+        {
+            "id":7,
+            "create_time":"2020-06-13 14:07:57",
+            "update_time":"2020-06-13 14:07:57",
+            "memo":"",
+            "name":"人事",
+            "code":"hr",
+            "sequence":3,
+            "parent":6,
+            "menus":[
+            ],
+            "model_perms":[
+            ]
+        }],
+    "code":20000
+}
