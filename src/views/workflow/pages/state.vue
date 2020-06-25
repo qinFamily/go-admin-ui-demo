@@ -126,7 +126,7 @@
             v-model="temp.fields"
             filterable
             :titles="['未选择', '已选择']"
-            :data="customfieldList"
+            :data="customfield_list"
             :props="permprops"
           />
         </el-form-item>
@@ -146,7 +146,14 @@
 </template>
 
 <script>
-import { state, user, group, role, auth } from '@/api/all'
+import {
+  customfield,
+  state,
+  user,
+  group,
+  role,
+  auth
+} from '@/api/all'
 import {
   checkAuthAdd,
   checkAuthDel,
@@ -160,15 +167,15 @@ export default {
   props: {
     wfdata: {
       type: Object,
-      default: () => { }
+      default: { }
     },
     list: {
       type: Array,
-      default: () => []
+      default: []
     },
     customfieldList: {
       type: Array,
-      default: () => []
+      default: []
     }
   },
 
@@ -215,6 +222,7 @@ export default {
   computed: {},
   created() {
     this.getMenuButton()
+    this.getCustomfieldList()
     this.selectParticipant()
   },
   methods: {
@@ -261,6 +269,9 @@ export default {
       role.requestGet().then(response => {
         this.choice_role_list = response.results
       })
+      // customfield.requestGet(this.workflow_temp).then(response => {
+      //   this.customfield_list = response.results;
+      // });
     },
     handleCreate() {
       this.resetTemp()

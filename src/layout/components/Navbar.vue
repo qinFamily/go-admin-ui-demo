@@ -44,10 +44,10 @@
           <router-link to="/profile/index">
             <el-dropdown-item>个人中心</el-dropdown-item>
           </router-link>
-          <a target="_blank" href="https://github.com/qinFamily/go-admin">
+          <a target="_blank" href="https://github.com/qinFamily/go-admin-demo">
             <el-dropdown-item>Github go-admin</el-dropdown-item>
           </a>
-          <a target="_blank" href="https://github.com/qinFamily/go-admin-ui">
+          <a target="_blank" href="https://github.com/qinFamily/go-admin-ui-vue">
             <el-dropdown-item>Github go-admin-ui</el-dropdown-item>
           </a>
           <a target="_blank" href="https://github.com/qinFamily/go-admin/wiki">

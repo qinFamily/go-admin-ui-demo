@@ -74,7 +74,7 @@
               v-for="(label, value) in field_types"
               :key="value"
               :label="label"
-              :value="parseInt(value)+1"
+              :value="parseInt(value)"
             />
           </el-select>
         </el-form-item>
