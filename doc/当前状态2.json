@@ -1,0 +1,94 @@
+#/s_ticket/2
+http://127.0.0.1:8080/api/workflow/state/?is_hidden=false&ticket=2&workflow=1&source_state=3
+{
+    "results":[
+        {
+            "id":3,
+            "create_time":"2020-06-13 14:08:02",
+            "update_time":"2020-06-13 14:08:02",
+            "memo":"",
+            "name":"申请人-编辑中",
+            "is_hidden":false,
+            "order_id":2,
+            "state_type":0,
+            "enable_retreat":false,
+            "participant_type":0,
+            "workflow":1,
+            "user_participant":[
+            ],
+            "group_participant":[
+            ],
+            "role_participant":[
+            ],
+            "fields":[
+                5,
+                6,
+                7]
+        },
+        {
+            "id":4,
+            "create_time":"2020-06-13 14:08:02",
+            "update_time":"2020-06-13 14:08:02",
+            "memo":"",
+            "name":"领导-审批中",
+            "is_hidden":false,
+            "order_id":3,
+            "state_type":0,
+            "enable_retreat":false,
+            "participant_type":3,
+            "workflow":1,
+            "user_participant":[
+            ],
+            "group_participant":[
+            ],
+            "role_participant":[
+                2,
+                4,
+                6],
+            "fields":[
+                8]
+        },
+        {
+            "id":5,
+            "create_time":"2020-06-13 14:08:03",
+            "update_time":"2020-06-13 14:08:03",
+            "memo":"",
+            "name":"人事-审批中",
+            "is_hidden":false,
+            "order_id":4,
+            "state_type":0,
+            "enable_retreat":false,
+            "participant_type":2,
+            "workflow":1,
+            "user_participant":[
+            ],
+            "group_participant":[
+                4],
+            "role_participant":[
+            ],
+            "fields":[
+                9]
+        },
+        {
+            "id":6,
+            "create_time":"2020-06-13 14:08:03",
+            "update_time":"2020-06-13 14:08:03",
+            "memo":"",
+            "name":"结束",
+            "is_hidden":false,
+            "order_id":98,
+            "state_type":2,
+            "enable_retreat":false,
+            "participant_type":0,
+            "workflow":1,
+            "user_participant":[
+            ],
+            "group_participant":[
+            ],
+            "role_participant":[
+            ],
+            "fields":[
+            ]
+        }],
+    "code":20000
+}

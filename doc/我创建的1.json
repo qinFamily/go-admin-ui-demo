@@ -1,0 +1,52 @@
+http://127.0.0.1:8080/api/ticket/ticket/?page=1&limit=20
+GET
+{
+    "code":200,
+    "data":{
+        "list":[
+            {
+                "id":1,
+                "createTime":"2020-06-13T10:33:37+08:00",
+                "updateTime":"2020-06-13T10:33:37+08:00",
+                "memo":"",
+                "name":"请假单-2020-06-13-18-32-48-202",
+                "sn":"leave_20200613183336522",
+                "participant":"",
+                "customfield":"[{`customfield`:1,`field_key`:`create_user`,`field_value`:``},{`customfield`:2,`field_key`:`create_time`,`field_value`:``},{`customfield`:3,`field_key`:`group`,`field_value`:``},{`customfield`:4,`field_key`:`id`,`field_value`:``},{`customfield`:5,`field_key`:`start_end_time`,`field_value`:[`2020-06-16`,`2020-07-16`]},{`customfield`:6,`field_key`:`type`,`field_value`:`1`},{`customfield`:7,`field_key`:`memo`,`field_value`:`随便写写`},{`customfield`:8,`field_key`:`leader_radio`,`field_value`:``},{`customfield`:9,`field_key`:`hr_radio`,`field_value`:``}]",
+                "createdAt":"2020-06-25T15:26:51+08:00",
+                "updatedAt":"2020-06-25T15:26:51+08:00",
+                "deletedAt":"",
+                "workflowId":1,
+                "transitionId":1,
+                "stateId":3,
+                "createBy":1,
+                "updateBy":0,
+                "dataScope":"",
+                "params":""
+            },
+            {
+                "id":2,
+                "createTime":"2020-06-25T05:50:10+08:00",
+                "updateTime":"2020-06-25T05:50:10+08:00",
+                "memo":"",
+                "name":"请假单-2020-06-25-13-42-27-277",
+                "sn":"leave_20200625135009552",
+                "participant":"",
+                "customfield":"[{`customfield`:1,`field_key`:`create_user`,`field_value`:``},{`customfield`:2,`field_key`:`create_time`,`field_value`:``},{`customfield`:3,`field_key`:`group`,`field_value`:``},{`customfield`:4,`field_key`:`id`,`field_value`:``},{`customfield`:5,`field_key`:`start_end_time`,`field_value`:[`2020-06-25`,`2020-07-24`]},{`customfield`:6,`field_key`:`type`,`field_value`:`2`},{`customfield`:7,`field_key`:`memo`,`field_value`:`建设银行`},{`customfield`:8,`field_key`:`leader_radio`,`field_value`:``},{`customfield`:9,`field_key`:`hr_radio`,`field_value`:``}]",
+                "createdAt":"2020-06-25T15:26:51+08:00",
+                "updatedAt":"2020-06-25T15:26:51+08:00",
+                "deletedAt":"",
+                "workflowId":1,
+                "transitionId":1,
+                "stateId":3,
+                "createBy":1,
+                "updateBy":0,
+                "dataScope":"",
+                "params":""
+            }],
+        "count":2,
+        "pageIndex":1,
+        "pageSize":10
+    },
+    "msg":""
+}

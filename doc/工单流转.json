@@ -1,0 +1,9 @@
+#/s_ticket/1
+
+http://127.0.0.1:8080/api/workflow/transition/?is_hidden=false&ticket=1&workflow=1&source_state=6
+
+{
+    "results":[
+    ],
+    "code":20000
+}

@@ -161,8 +161,12 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item v-if="form.menuType == 'M' || form.menuType == 'C'" label="路由名称" prop="menuName">
-              <el-input v-model="form.menuName" placeholder="请输入路由名称" />
+            <el-form-item
+              v-if="form.menuType == 'M' || form.menuType == 'C'"
+              label="路由名称"
+              prop="menuName"
+            >
+              <el-input v-model="form.menuName" placeholder="请输入路由名称" maxlength="11" />
             </el-form-item>
           </el-col>
 
@@ -383,7 +387,7 @@ export default {
       }).then(() => {
         this.getList()
         this.msgSuccess('删除成功')
-      }).catch(function() {})
+      }).catch(function() { })
     }
   }
 }

@@ -1,0 +1,76 @@
+{
+    "results":[
+        {
+            "id":1,
+            "workflow_set":[
+                {
+                    "id":1,
+                    "create_time":"2020-06-13 14:08:00",
+                    "update_time":"2020-06-13 14:08:00",
+                    "memo":"",
+                    "name":"请假单",
+                    "ticket_sn_prefix":"leave",
+                    "status":true,
+                    "view_permission_check":true,
+                    "limit_expression":"{}",
+                    "display_form_str":"[]",
+                    "title_template":"你有一个待办工单:{title}",
+                    "type":1
+                }],
+            "create_time":"2020-06-13 14:08:00",
+            "update_time":"2020-06-14 18:54:40",
+            "memo":"mark",
+            "name":"行政",
+            "code":"ad",
+            "order_id":1
+        },
+        {
+            "id":2,
+            "workflow_set":[
+                {
+                    "id":2,
+                    "create_time":"2020-06-13 14:08:05",
+                    "update_time":"2020-06-13 14:08:05",
+                    "memo":"",
+                    "name":"发布单",
+                    "ticket_sn_prefix":"deploy",
+                    "status":true,
+                    "view_permission_check":true,
+                    "limit_expression":"{}",
+                    "display_form_str":"[]",
+                    "title_template":"你有一个待办工单:{title}",
+                    "type":2
+                }],
+            "create_time":"2020-06-13 14:08:05",
+            "update_time":"2020-06-14 19:06:14",
+            "memo":"mark",
+            "name":"技术",
+            "code":"it",
+            "order_id":2
+        },
+        {
+            "id":3,
+            "workflow_set":[
+                {
+                    "id":3,
+                    "create_time":"2020-06-13 23:09:09",
+                    "update_time":"2020-06-13 23:09:09",
+                    "memo":"盖章签呈",
+                    "name":"盖章签呈",
+                    "ticket_sn_prefix":"gzqc",
+                    "status":true,
+                    "view_permission_check":true,
+                    "limit_expression":"",
+                    "display_form_str":"",
+                    "title_template":"",
+                    "type":3
+                }],
+            "create_time":"2020-06-13 22:53:07",
+            "update_time":"2020-06-13 22:53:07",
+            "memo":"公共事物中心",
+            "name":"盖章签呈",
+            "code":"gzqc",
+            "order_id":3
+        }],
+    "code":20000
+}

@@ -1,0 +1,36 @@
+驳回
+http://127.0.0.1:8080/api/ticket/ticket/3/
+PUT
+{
+create_time: "2020-06-25 15:40:04"
+create_user: 1
+customfield: "[{"id":19,"ticket":3,"customfield":1,"field_value":"admin"},{"id":20,"ticket":3,"customfield":2,"field_value":"2020-06-25 07:40:04.315150+00:00"},{"id":21,"ticket":3,"customfield":3,"field_value":"top"},{"id":22,"ticket":3,"customfield":4,"field_value":1},{"id":23,"ticket":3,"customfield":5,"field_value":"['2020-06-24', '2020-07-20']"},{"id":24,"ticket":3,"customfield":6,"field_value":"2"},{"id":25,"ticket":3,"customfield":7,"field_value":"好像生产了"},{"id":26,"ticket":3,"customfield":8,"field_value":""},{"id":27,"ticket":3,"customfield":9,"field_value":""}]"
+id: 3
+memo: ""
+name: "请假单-2020-06-25-15-38-25-654"
+participant: "hr_tl"
+sn: "leave_20200625154004503"
+state: 3
+transition: 6
+update_time: "2020-06-25 15:40:04"
+workflow: 1
+}
+返回：
+{
+    "results":{
+        "id":3,
+        "create_time":"2020-06-25 15:40:04",
+        "update_time":"2020-06-25 22:01:59",
+        "memo":"",
+        "name":"请假单-2020-06-25-15-38-25-654",
+        "sn":"leave_20200625154004503",
+        "participant":"hr_tl",
+        "customfield":"[{\"id\":19,\"ticket\":3,\"customfield\":1,\"field_value\":\"admin\"},{\"id\":20,\"ticket\":3,\"customfield\":2,\"field_value\":\"2020-06-25 07:40:04.315150+00:00\"},{\"id\":21,\"ticket\":3,\"customfield\":3,\"field_value\":\"top\"},{\"id\":22,\"ticket\":3,\"customfield\":4,\"field_value\":1},{\"id\":23,\"ticket\":3,\"customfield\":5,\"field_value\":\"['2020-06-24', '2020-07-20']\"},{\"id\":24,\"ticket\":3,\"customfield\":6,\"field_value\":\"2\"},{\"id\":25,\"ticket\":3,\"customfield\":7,\"field_value\":\"好像生产了\"},{\"id\":26,\"ticket\":3,\"customfield\":8,\"field_value\":\"\"},{\"id\":27,\"ticket\":3,\"customfield\":9,\"field_value\":\"\"}]",
+        "create_user":1,
+        "workflow":1,
+        "state":3,
+        "transition":6
+    },
+    "code":20000
+}
+

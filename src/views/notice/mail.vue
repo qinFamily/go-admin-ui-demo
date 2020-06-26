@@ -1,7 +1,23 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
+      <el-input
+        v-model="listQuery.search"
+        placeholder="请输入内容"
+        clearable
+        prefix-icon="el-icon-search"
+        style="width: 200px;"
+        class="filter-item"
+        @keyup.enter.native="handleFilter"
+        @clear="handleFilter"
+      />
       <el-button-group>
+        <el-button
+          class="filter-item"
+          type="primary"
+          icon="el-icon-search"
+          @click="handleFilter"
+        >{{ "搜索" }}</el-button>
         <el-button
           v-if="permissionList.add"
           class="filter-item"
@@ -12,26 +28,20 @@
       </el-button-group>
     </div>
 
-    <el-table :data="list" border style="width: 100%" highlight-current-row>
-      <el-table-column label="名称" prop="field_name" />
-      <el-table-column label="标识" prop="field_key" />
-      <el-table-column label="类型" prop="field_type">
-        <template slot-scope="{ row }">
-          <span>{{ row.field_type|FieldTypeFilter }}</span>
-        </template>
-      </el-table-column>
-      <el-table-column label="字段是否内置" prop="field_attribute">
-        <template slot-scope="{ row }">
-          <el-tag v-if="row.field_attribute" type="success">是</el-tag>
-          <el-tag v-else type="danger">否</el-tag>
-        </template>
-      </el-table-column>
-      <el-table-column label="排序" prop="order_id" />
-      <el-table-column label="默认值" prop="default_value" />
-      <el-table-column label="标签" prop="label" />
+    <el-table
+      v-loading="listLoading"
+      :data="list"
+      border
+      style="width: 100%"
+      highlight-current-row
+      @sort-change="handleSortChange"
+    >
+      <el-table-column label="名称" prop="name"></el-table-column>
+      <el-table-column label="主机" prop="host"></el-table-column>
+      <el-table-column label="账号" prop="user"></el-table-column>
       <el-table-column label="操作" align="center" width="260" class-name="small-padding fixed-width">
         <template slot-scope="{ row }">
-          <el-button-group v-if="row.field_attribute">
+          <el-button-group>
             <el-button
               v-if="permissionList.update"
               size="small"
@@ -48,6 +58,15 @@
         </template>
       </el-table-column>
     </el-table>
+    <div class="table-pagination">
+      <pagination
+        v-show="total > 0"
+        :total="total"
+        :page.sync="listQuery.offset"
+        :limit.sync="listQuery.limit"
+        @pagination="getList"
+      />
+    </div>
     <el-dialog
       :title="textMap[dialogStatus]"
       :visible.sync="dialogFormVisible"
@@ -58,47 +77,23 @@
         :rules="rules"
         :model="temp"
         label-position="left"
-        label-width="100px"
+        label-width="80px"
         style="width: 400px; margin-left:50px;"
       >
-        <el-form-item label="字段名称" prop="field_name">
-          <el-input v-model="temp.field_name" />
+        <el-form-item label="名称" prop="name">
+          <el-input v-model="temp.name" />
         </el-form-item>
-        <el-form-item label="字段标识" prop="field_key">
-          <el-input v-model="temp.field_key" />
-          <a class="tips">字段类型请尽量特殊，避免与系统中关键字冲突</a>
+        <el-form-item label="主机" prop="host">
+          <el-input v-model="temp.host" />
         </el-form-item>
-        <el-form-item label="字段类型" prop="field_type">
-          <el-select v-model="temp.field_type" clearable placeholder="请选择">
-            <el-option
-              v-for="(label, value) in field_types"
-              :key="value"
-              :label="label"
-              :value="parseInt(value)"
-            />
-          </el-select>
+        <el-form-item label="账号" prop="user">
+          <el-input v-model="temp.user" />
         </el-form-item>
-        <el-form-item label="排序" prop="order_id">
-          <el-input v-model="temp.order_id" />
+        <el-form-item label="密码" prop="password">
+          <el-input v-model="temp.password" />
         </el-form-item>
-        <el-form-item label="默认值" prop="default_value">
-          <el-input v-model="temp.default_value" />
-          <a class="tips">前端展示时，可以将此内容作为表单中的该字段的默认值</a>
-        </el-form-item>
-        <el-form-item v-if="temp.field_type===9" label="文本域模板" prop="field_template">
-          <el-input v-model="temp.field_template" />
-          <a class="tips">文本域类型字段前端显示时可以将此内容作为字段的placeholder</a>
-        </el-form-item>
-        <el-form-item v-if="temp.field_type===4" label="布尔类型显示名" prop="boolean_field_display">
-          <el-input v-model="temp.boolean_field_display" />
-          <a class="tips">当为布尔类型时候，可以支持自定义显示形式。{"1":"是","0":"否"}或{"1":"需要","0":"不需要"}，注意数字也需要引号</a>
-        </el-form-item>
-        <el-form-item v-if="[10,11].includes(temp.field_type)" label="多选值" prop="field_choice">
-          <el-input v-model="temp.field_choice" />
-          <a class="tips">radio,select:{"1":"中国", "2":"美国"},注意数字也需要引号</a>
-        </el-form-item>
-        <el-form-item label="标签" prop="label">
-          <el-input v-model="temp.label" />
+        <el-form-item label="接收者" prop="to">
+          <el-input v-model="temp.to" />
         </el-form-item>
         <el-form-item label="备注" prop="memo">
           <el-input v-model="temp.memo" />
@@ -116,7 +111,8 @@
 </template>
 
 <script>
-import { customfield, auth } from '@/api/all'
+import { mail, auth } from '@/api/all'
+import Pagination from '@/components/Pagination'
 import {
   checkAuthAdd,
   checkAuthDel,
@@ -125,19 +121,9 @@ import {
 } from '@/utils/permission'
 
 export default {
-  name: 'Customfield',
+  name: 'Mail',
 
-  components: {},
-  props: {
-    wfdata: {
-      type: Object,
-      default: {}
-    },
-    list: {
-      type: Array,
-      default: []
-    }
-  },
+  components: { Pagination },
   data() {
     return {
       operationList: [],
@@ -146,6 +132,16 @@ export default {
         del: false,
         view: false,
         update: false
+      },
+      list: [],
+      total: 0,
+      listLoading: true,
+      loading: true,
+      listQuery: {
+        offset: 1,
+        limit: 20,
+        search: undefined,
+        ordering: undefined
       },
       temp: {},
       dialogFormVisible: false,
@@ -156,28 +152,13 @@ export default {
       },
       rules: {
         name: [{ required: true, message: '请输入名称', trigger: 'blur' }]
-      },
-      field_types: {
-        1: '字符串',
-        2: '整形',
-        3: '浮点型',
-        4: '布尔',
-        5: '日期',
-        6: '日期时间',
-        7: '范围日期',
-        8: '文本域',
-        9: '单选框',
-        10: '下拉列表',
-        11: '用户名',
-        12: '多选框',
-        13: '多选下拉',
-        14: '多选用户名'
       }
     }
   },
   computed: {},
   created() {
     this.getMenuButton()
+    this.getList()
   },
   methods: {
     checkPermission() {
@@ -188,7 +169,7 @@ export default {
     },
     getMenuButton() {
       auth
-        .requestMenuButton('customfield')
+        .requestMenuButton('mail')
         .then(response => {
           this.operationList = response.results
         })
@@ -196,26 +177,43 @@ export default {
           this.checkPermission()
         })
     },
-    handleFilter() { },
+    getList() {
+      this.listLoading = true
+      mail.requestGet(this.listQuery).then(response => {
+        this.list = response.results
+        this.total = response.count
+        this.listLoading = false
+      })
+    },
+    handleFilter() {
+      this.getList()
+    },
+    handleSortChange(val) {
+      if (val.order === 'ascending') {
+        this.listQuery.ordering = val.prop
+      } else if (val.order === 'descending') {
+        this.listQuery.ordering = '-' + val.prop
+      } else {
+        this.listQuery.ordering = ''
+      }
+      this.getList()
+    },
     resetTemp() {
       this.temp = {
-        memo: '',
-        field_type: 1,
-        field_key: '',
-        field_name: '',
-        order_id: 10,
-        default_value: '',
-        field_template: '',
-        boolean_field_display: '',
-        field_choice: '',
-        label: '',
-        workflow: this.wfdata.id
+        type: 'mail',
+        name: '',
+        host: '',
+        user: '',
+        password: '123456',
+        to: '',
+        memo: ''
       }
     },
     handleCreate() {
       this.resetTemp()
       this.dialogStatus = 'create'
       this.dialogFormVisible = true
+      this.loading = false
       this.$nextTick(() => {
         this.$refs['dataForm'].clearValidate()
       })
@@ -223,7 +221,8 @@ export default {
     createData() {
       this.$refs['dataForm'].validate(valid => {
         if (valid) {
-          customfield
+          this.loading = true
+          mail
             .requestPost(this.temp)
             .then(response => {
               this.dialogFormVisible = false
@@ -233,9 +232,11 @@ export default {
                 type: 'success',
                 duration: 2000
               })
-              this.$emit('checkdata')
+              this.getList()
             })
-            .catch(() => { })
+            .catch(() => {
+              this.loading = false
+            })
         }
       })
     },
@@ -250,7 +251,8 @@ export default {
     updateData() {
       this.$refs['dataForm'].validate(valid => {
         if (valid) {
-          customfield
+          this.loading = true
+          mail
             .requestPut(this.temp.id, this.temp)
             .then(() => {
               this.dialogFormVisible = false
@@ -260,7 +262,6 @@ export default {
                 type: 'success',
                 duration: 2000
               })
-              this.$emit('checkdata')
             })
             .catch(() => {
               this.loading = false
@@ -275,12 +276,12 @@ export default {
         type: 'warning'
       })
         .then(() => {
-          customfield.requestDelete(row.id).then(() => {
+          mail.requestDelete(row.id).then(() => {
             this.$message({
               message: '删除成功',
               type: 'success'
             })
-            this.$emit('checkdata')
+            this.getList()
           })
         })
         .catch(() => {

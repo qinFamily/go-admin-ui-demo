@@ -22,11 +22,11 @@ export const state = new Request('/api/v1/workflow/state/')
 export const transition = new Request('/api/v1/workflow/transition/')
 export const customfield = new Request('/api/v1/workflow/customfield/')
 
-// tickets
-export const ticket = new Request('/ticket/ticket/')
-export const ticketflowlog = new Request('/ticket/ticketflowlog/')
-export const ticketcustomfield = new Request('/ticket/ticketcustomfield/')
-export const ticketuser = new Request('/ticket/ticketuser/')
+// tickets 工单
+export const ticket = new Request('/api/v1/ticket/ticket/')
+export const ticketflowlog = new Request('/api/v1/ticket/ticketflowlog/')
+export const ticketcustomfield = new Request('/api/v1/ticket/ticketcustomfield/')
+export const ticketuser = new Request('/api/v1/ticket/ticketuser/')
 
 // notices
 export const mail = new Request('/notice/mail/')

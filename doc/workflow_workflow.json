@@ -1,0 +1,26 @@
+{
+    "results":[
+        {
+            "id":1,
+            "create_time":"2020-06-13 14:08:00",
+            "update_time":"2020-06-13 14:08:00",
+            "memo":"",
+            "name":"请假单",
+            "ticket_sn_prefix":"leave",
+            "status":true,
+            "view_permission_check":true,
+            "limit_expression":"{}",
+            "display_form_str":"[]",
+            "title_template":"你有一个待办工单:{title}",
+            "type":{
+                "id":1,
+                "create_time":"2020-06-13 14:08:00",
+                "update_time":"2020-06-14 18:54:40",
+                "memo":"mark",
+                "name":"行政",
+                "code":"ad",
+                "order_id":1
+            }
+        }],
+    "code":20000
+}

@@ -65,7 +65,6 @@ const actions = {
           removeToken()
           resolve()
         }
-        console.log(response.data)
         const { roles, name, avatar, introduction, permissions, ip } = response.data
 
         // roles must be a non-empty array
