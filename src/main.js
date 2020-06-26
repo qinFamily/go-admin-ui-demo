@@ -19,6 +19,9 @@ import { getDicts } from '@/api/system/dict/data'
 import { getConfigKey } from '@/api/system/config'
 import { parseTime, resetForm, addDateRange, selectDictLabel, download } from '@/utils/costum'
 
+import Node from '@/components/Generator/node'
+Vue.component('Node', Node)
+
 import './icons' // icon
 import './permission' // permission control
 import './utils/error-log' // error log
@@ -52,15 +55,15 @@ if (process.env.NODE_ENV === 'production') {
 // 全局组件挂载
 Vue.component('Pagination', Pagination)
 
-Vue.prototype.msgSuccess = function(msg) {
+Vue.prototype.msgSuccess = function (msg) {
   this.$message({ showClose: true, message: msg, type: 'success' })
 }
 
-Vue.prototype.msgError = function(msg) {
+Vue.prototype.msgError = function (msg) {
   this.$message({ showClose: true, message: msg, type: 'error' })
 }
 
-Vue.prototype.msgInfo = function(msg) {
+Vue.prototype.msgInfo = function (msg) {
   this.$message.info(msg)
 }
 
