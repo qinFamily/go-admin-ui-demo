@@ -1,0 +1,31 @@
+http://127.0.0.1:8000/api/ticket/ticketflowlog/?is_hidden=false&ticket=2&workflow=1&source_state=3
+起作用的参数是ticket
+{
+    "code":200,
+    "data":{
+        "list":[
+            {
+                "id":2,
+                "createTime":"2020-06-25T05:50:10+08:00",
+                "updateTime":"2020-06-25T05:50:10+08:00",
+                "memo":"",
+                "suggestion":"没啥意见",
+                "participant":"admin",
+                "interveneType":0,
+                "stateId":1,
+                "ticketId":2,
+                "transitionId":1,
+                "createBy":"",
+                "updateBy":"",
+                "dataScope":"",
+                "params":"",
+                "createdAt":"2020-06-25T15:27:17+08:00",
+                "updatedAt":"2020-06-25T15:27:17+08:00",
+                "deletedAt":null
+            }],
+        "count":1,
+        "pageIndex":1,
+        "pageSize":10
+    },
+    "msg":""
+}

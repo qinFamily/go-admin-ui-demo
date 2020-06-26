@@ -1,0 +1,9 @@
+{
+    "name":"请假单-2020-06-26-12-52-02-321",
+    "participant":"dev_tl",
+    "create_user":1,
+    "workflow":1,
+    "state":4,
+    "transition":2,
+    "customfield":"[{\"customfield\":1,\"field_key\":\"create_user\",\"field_value\":\"\"},{\"customfield\":2,\"field_key\":\"create_time\",\"field_value\":\"\"},{\"customfield\":3,\"field_key\":\"group\",\"field_value\":\"\"},{\"customfield\":4,\"field_key\":\"id\",\"field_value\":\"\"},{\"customfield\":5,\"field_key\":\"start_end_time\",\"field_value\":[\"2020-07-24\",\"2020-07-24\"]},{\"customfield\":6,\"field_key\":\"type\",\"field_value\":\"2\"},{\"customfield\":7,\"field_key\":\"memo\",\"field_value\":\"陪产假，生了大白胖小子\"},{\"customfield\":8,\"field_key\":\"leader_radio\",\"field_value\":\"\"},{\"customfield\":9,\"field_key\":\"hr_radio\",\"field_value\":\"\"}]"
+}
