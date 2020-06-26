@@ -244,7 +244,7 @@ export function getTime(type) {
 export function debounce(func, wait, immediate) {
   let timeout, args, context, timestamp, result
 
-  const later = function() {
+  const later = function () {
     // 据上一次触发时间间隔
     const last = +new Date() - timestamp
 
@@ -261,7 +261,7 @@ export function debounce(func, wait, immediate) {
     }
   }
 
-  return function(...args) {
+  return function (...args) {
     context = this
     timestamp = +new Date()
     const callNow = immediate && !timeout
@@ -359,4 +359,20 @@ export function formatJson(filterVal, jsonData) {
       return v[j]
     }
   }))
+}
+
+/**
+ * @param {Object} date
+ * @returns {string}
+ */
+
+export function GenDatetime(date) {
+  const Y = date.getFullYear().toString()
+  const M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1)
+  const D = date.getDate() + 1 < 10 ? '0' + date.getDate() : date.getDate()
+  const h = date.getHours() < 10 ? '0' + date.getHours() : date.getHours()
+  const m = date.getMinutes() + 1 < 10 ? '0' + date.getMinutes() : date.getMinutes()
+  const s = date.getSeconds() + 1 < 10 ? '0' + date.getSeconds() : date.getSeconds()
+  const ms = date.getMilliseconds().toString().length < 3 ? '0' + date.getMilliseconds() : date.getMilliseconds()
+  return Y + '-' + M + '-' + D + '-' + h + '-' + m + '-' + s + '-' + ms
 }

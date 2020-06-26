@@ -49,7 +49,7 @@
       </el-table-column>
       <el-table-column label="创建者" prop="create_user">
         <template slot-scope="{ row }">
-          <span>{{row.create_user.username}}</span>
+          <span>{{row.create_user.nickName}}</span>
         </template>
       </el-table-column>
       <el-table-column label="创建时间" prop="create_time"></el-table-column>
@@ -118,12 +118,12 @@ export default {
         limit: 20,
         search: undefined,
         ordering: undefined,
-        create_user__username: this.username
+        create_user__username: this.name
       }
     }
   },
   computed: {
-    ...mapGetters(['username'])
+    ...mapGetters(['name'])
   },
   created() {
     this.getMenuButton()

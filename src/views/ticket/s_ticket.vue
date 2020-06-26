@@ -25,7 +25,7 @@
               >
                 <el-form-item
                   :label="item.customfield.field_name"
-                  :prop="item.field_key"
+                  :prop="item.customfield.field_key"
                   :rules="match_fields.includes(item.customfield.id)?
                   [{ required: true, message: '请输入' + item.customfield.field_name, trigger: 'blur' },]:[]"
                 >
@@ -322,7 +322,7 @@ export default {
       },
       match_fields: [],
       workflow_temp: {
-        participant: this.username,
+        participant: this.name,
         is_hidden: false
       },
       stateActive: 999,
@@ -342,9 +342,9 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['username']),
+    ...mapGetters(['name']),
     formatDate() {
-      return function(date) {
+      return function (date) {
         const d = eval('(' + date + ')')
         return d
       }
@@ -363,7 +363,7 @@ export default {
         id: id
       }
       ticket.requestGet(params).then(response => {
-        this.wfdata = response.results[0]
+        this.wfdata = response.data
         this.wfdata.memo = ''
         this.setPageTitle()
 
@@ -378,7 +378,7 @@ export default {
     },
     getCustomfieldList() {
       ticketcustomfield.requestGet(this.workflow_temp).then(response => {
-        this.customfield_list = response.results
+        this.customfield_list = response.data.list
       })
     },
     getStateList() {
@@ -403,7 +403,7 @@ export default {
     },
     getTicketlogList() {
       ticketflowlog.requestGet(this.workflow_temp).then(response => {
-        this.ticketlog_list = response.results
+        this.ticketlog_list = response.data.list
       })
     },
     getUserList() {
@@ -492,7 +492,7 @@ export default {
               })
               this.$router.push({ path: '/todo_ticket' })
             })
-            .catch(() => {})
+            .catch(() => { })
         }
       })
     }

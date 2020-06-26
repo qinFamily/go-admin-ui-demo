@@ -140,7 +140,12 @@
                     clearable
                     :disabled="item.field_attribute ||! match_fields.includes(item.id)"
                   >
-                    <el-option v-for="t in user_list" :key="t.id" :label="t.username" :value="t.username"></el-option>
+                    <el-option
+                      v-for="t in user_list"
+                      :key="t.id"
+                      :label="t.username"
+                      :value="t.username"
+                    ></el-option>
                   </el-select>
 
                   <el-select
@@ -151,7 +156,12 @@
                     multiple
                     :disabled="item.field_attribute ||! match_fields.includes(item.id)"
                   >
-                    <el-option v-for="t in user_list" :key="t.id" :label="t.username" :value="t.username"></el-option>
+                    <el-option
+                      v-for="t in user_list"
+                      :key="t.id"
+                      :label="t.username"
+                      :value="t.username"
+                    ></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
@@ -289,7 +299,7 @@ export default {
         participant: ''
       },
       workflow_temp: {
-        participant: this.username
+        participant: this.name
       },
       choice_user_list: [],
       dialogTitle: '',
@@ -307,7 +317,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['user_id'])
+    ...mapGetters(['userId', 'name'])
   },
   created() {
     const id = this.$route.params && this.$route.params.id
@@ -428,16 +438,21 @@ export default {
         {
           name: this.ticket.name,
           participant: this.ticket.participant,
-          create_user: this.user_id,
-          workflow: this.wfdata.id,
-          state: transition.dest_state.id,
-          transition: transition.id,
+          // create_user: this.userId,
+          // workflow: this.wfdata.id,
+          // state: transition.dest_state.id,
+          // transition: transition.id,
+          createBy: this.userId,
+          workflowId: this.wfdata.id,
+          stateId: transition.dest_state.id,
+          transitionId: transition.id,
           customfield: JSON.stringify(customfield)
         }
       )
 
       this.$refs[dataForm].validate(valid => {
         if (valid) {
+          console.log("u_ticket post", data)
           ticket
             .requestPost(data)
             .then(res => {
@@ -449,7 +464,7 @@ export default {
               })
               this.$router.push({ path: '/my_ticket' })
             })
-            .catch(() => {})
+            .catch(() => { })
         }
       })
     }
