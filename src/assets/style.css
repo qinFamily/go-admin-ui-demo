@@ -174,12 +174,12 @@ button {
 }
 /******************* 导航**************** */
 .fd-nav {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
   z-index: 997;
-  width: 100%;
+  width: 90%;
   height: 60px;
   font-size: 14px;
   color: #fff;
@@ -248,11 +248,12 @@ button {
 }
 .fd-nav-content {
   position: fixed;
-  top: 60px;
+  top: 120px;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1;
+  height: 100%;
+  z-index: 10;
   overflow-x: hidden;
   overflow-y: auto;
   padding-bottom: 30px;
@@ -689,7 +690,7 @@ handler-wrap .ant-input-number-handler .ant-input-number-handler-up-inner {
 .zoom .zoom-in, .zoom .zoom-out {
   width: 30px;
   height: 30px;
-  background: #fff;
+  background: rgb(187, 182, 182);
   color: #c1c1cd;
   cursor: pointer;
   background-size: 100%;
