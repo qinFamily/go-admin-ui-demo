@@ -116,6 +116,7 @@ export default {
       }
     },
     addApprover (item) {
+      // console.log('父节点:')
       // console.log(this.node)
       var node = {
         name: '审批人',
@@ -123,6 +124,8 @@ export default {
         nodeId: '' + new Date().getTime(),
         type: 'approver'
       }
+      // console.log('新的审批节点:')
+      // console.log(node)
       this.$emit('addnode', node)
     },
     addNotifier (item) {

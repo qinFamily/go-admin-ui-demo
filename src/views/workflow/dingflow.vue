@@ -1,35 +1,32 @@
 <template>
-  <div id="app-container">
-    <Main :data.sync="data" @ok="ok" />
+  <div>
+    <Main :data="data" @ok="ok" />
   </div>
 </template>
-
 <script>
+import Main from '@/components/Generator'
 import '@/assets/style.css'
-import Main from '@/components/Generator/Main'
 export default {
-  name: 'dingflow',
   components: {
     Main
   },
-  props: {
-    data: {
-      type: Object,
-      default: undefined
-    }
-  },
   data() {
     return {
+      data: {
+        title: '请假',
+        node: {
+          name: '发起人',
+          type: 'start',
+          nodeId: 'sid-startevent',
+          childNode: {}
+        }
+      }
     }
   },
   methods: {
     ok(data) {
       console.log(data)
-      this.$emit('update:data', data)
     }
   }
 }
 </script>
-
-<style>
-</style>

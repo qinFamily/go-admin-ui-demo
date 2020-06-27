@@ -74,6 +74,7 @@
     "vue-splitpane": "1.0.4",
     "vuedraggable": "2.20.0",
     "vuex": "3.1.0",
+    "workflow-ui": "^1.2.1",
     "xlsx": "0.14.1"
   },
   "devDependencies": {
@@ -121,12 +122,12 @@
     "> 1%",
     "last 2 versions"
   ],
-  "rules":{
+  "rules": {
     "generator-star-spacing": "off",
-    "no-tabs":"off",
-    "no-unused-vars":"off",
-    "no-console":"off",
-    "no-irregular-whitespace":"off",
+    "no-tabs": "off",
+    "no-unused-vars": "off",
+    "no-console": "off",
+    "no-irregular-whitespace": "off",
     "no-debugger": "off"
   }
 }
