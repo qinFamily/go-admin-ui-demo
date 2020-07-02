@@ -1,0 +1,36 @@
+{
+    "url": "http://127.0.0.1:8000/api/v1/sysUserList?pageIndex=1&pageSize=10&deptId=8",
+    "code": 200,
+    "data": {
+        "list": [
+            {
+                "userId": 2,
+                "nickName": "zhangwj",
+                "phone": "13211111111",
+                "roleId": 3,
+                "salt": "",
+                "avatar": "https://wpimg.wallstcn.com/e7d23d71-cf19-4b90-a1cc-f56af8c0903d.png",
+                "sex": "0",
+                "email": "q@q.com",
+                "deptId": 8,
+                "postId": 2,
+                "createBy": "1",
+                "updateBy": "1",
+                "remark": "",
+                "status": "0",
+                "dataScope": "",
+                "params": "",
+                "createdAt": "2019-11-12T18:28:27+08:00",
+                "updatedAt": "2020-03-14T20:08:43+08:00",
+                "deletedAt": null,
+                "username": "zhangwj",
+                "password": "$2a$10$CqMwHahA3cNrNv16CoSxmeD4XMPU.BiKHPEAeaG5oXMavOKrjInXi",
+                "deptName": "运维部"
+            }
+        ],
+        "count": 2,
+        "pageIndex": 1,
+        "pageSize": 10
+    },
+    "msg": ""
+}
