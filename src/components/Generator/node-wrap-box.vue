@@ -60,6 +60,8 @@
       </div>
     </div>
     <AddNodeApprover
+      :userList="userList"
+      :deptOptions="deptOptions"
       :dialog.sync="dialog"
       :properties="node.properties"
       @setProperties="setProperties"
@@ -77,7 +79,32 @@ export default {
     node: {
       type: Object,
       default: Object
-    }
+    },
+    // 用户表格数据
+    userList: {
+      type: Array,
+      default: () => [],
+    },
+    // 状态数据字典
+    statusOptions: {
+      type: Array,
+      default: () => [],
+    },
+    // 岗位选项
+    postOptions: {
+      type: Array,
+      default: () => [],
+    },
+    // 角色选项
+    roleOptions: {
+      type: Array,
+      default: () => [],
+    },
+    // 部门选项
+    deptOptions: {
+      type: Array,
+      default: () => [],
+    },
   },
   data: () => ({
     dialog: false,
@@ -89,6 +116,23 @@ export default {
   }),
   mounted() {
     this.setText()
+  },
+  watch: {
+    userList(newV, oldV) {
+      this.userList = newV
+    },
+    statusOptions(v) {
+      this.statusOptions = v
+    },
+    postOptions(v) {
+      this.postOptions = v
+    },
+    roleOptions(v) {
+      this.roleOptions = v
+    },
+    deptOptions(v, vo) {
+      this.deptOptions = v
+    },
   },
   methods: {
     delNode() {
@@ -146,7 +190,7 @@ export default {
           default:
         }
       }
-    }
+    },
   }
 }
 </script>

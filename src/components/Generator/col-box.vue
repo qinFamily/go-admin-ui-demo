@@ -1,28 +1,18 @@
 <template>
-  <div
-    :key="key"
-    class="col-box"
-  >
-    <div
-      v-if="pos == 0"
-      class="top-left-cover-line"
-    />
-    <div
-      v-if="pos == 0"
-      class="bottom-left-cover-line"
-    />
-    <div
-      v-if="pos == (total-1)"
-      class="top-right-cover-line"
-    />
-    <div
-      v-if="pos == (total-1)"
-      class="bottom-right-cover-line"
-    />
+  <div :key="key" class="col-box">
+    <div v-if="pos == 0" class="top-left-cover-line" />
+    <div v-if="pos == 0" class="bottom-left-cover-line" />
+    <div v-if="pos == (total-1)" class="top-right-cover-line" />
+    <div v-if="pos == (total-1)" class="bottom-right-cover-line" />
     <Node
       v-for="(item, index) in items"
       :key="index"
       :node="item"
+      :userList="userList"
+      :statusOptions="statusOptions"
+      :postOptions="postOptions"
+      :roleOptions="roleOptions"
+      :deptOptions="deptOptions"
       @addnode="addnode"
       @delNode="delNode(item)"
       @delConditionNode="delConditionNode"
@@ -46,7 +36,32 @@ export default {
     pos: {
       type: Number,
       default: 0
-    }
+    },
+    // 用户表格数据
+    userList: {
+      type: Array,
+      default: () => [],
+    },
+    // 状态数据字典
+    statusOptions: {
+      type: Array,
+      default: () => [],
+    },
+    // 岗位选项
+    postOptions: {
+      type: Array,
+      default: () => [],
+    },
+    // 角色选项
+    roleOptions: {
+      type: Array,
+      default: () => [],
+    },
+    // 部门选项
+    deptOptions: {
+      type: Array,
+      default: () => [],
+    },
   },
   data: () => ({
     items: [],
@@ -56,7 +71,7 @@ export default {
   }),
   watch: {
     node: {
-      handler (val) {
+      handler(val) {
         // console.log(val)
         if (val) {
           this.getData(val)
@@ -66,29 +81,29 @@ export default {
       deep: true
     }
   },
-  mounted () {
+  mounted() {
     if (this.node) {
       this.getData(this.node)
       this.node1 = this.node
     }
   },
   methods: {
-    getData (data) {
+    getData(data) {
       this.items = []
       iteratorData(this.items, data)
     },
-    addnode (node) {
+    addnode(node) {
       addNewNode(node, this.node1, this.items)
       this.key++
     },
-    delNode (node) {
+    delNode(node) {
       delNode(node, this.node1, this.items)
       this.key++
     },
-    delConditionNode () {
+    delConditionNode() {
       this.$emit('delConditionNode')
     },
-    addConditionFactor (node) {
+    addConditionFactor(node) {
       this.$emit('addConditionFactor', node)
     }
   }

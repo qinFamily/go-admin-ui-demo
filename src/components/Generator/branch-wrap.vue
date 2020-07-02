@@ -1,10 +1,7 @@
 <template>
   <div class="branch-wrap">
     <div class="branch-box-wrap">
-      <BranchBox
-        @addCondition="addCondition"
-        @delNode="delNode"
-      >
+      <BranchBox @addCondition="addCondition" @delNode="delNode">
         <ColBox
           v-for="(item,index) in node.conditionNodes"
           :key="index"
@@ -16,6 +13,11 @@
         />
       </BranchBox>
       <AddNodeBtnBox
+        :userList="userList"
+        :statusOptions="statusOptions"
+        :postOptions="postOptions"
+        :roleOptions="roleOptions"
+        :deptOptions="deptOptions"
         :node="node"
         @addnode="addnode"
       />
@@ -37,15 +39,57 @@ export default {
     node: {
       type: Object,
       default: undefined
-    }
+    },
+    // 用户表格数据
+    userList: {
+      type: Array,
+      default: () => [],
+    },
+    // 状态数据字典
+    statusOptions: {
+      type: Array,
+      default: () => [],
+    },
+    // 岗位选项
+    postOptions: {
+      type: Array,
+      default: () => [],
+    },
+    // 角色选项
+    roleOptions: {
+      type: Array,
+      default: () => [],
+    },
+    // 部门选项
+    deptOptions: {
+      type: Array,
+      default: () => [],
+    },
   },
   data: () => ({
     //
   }),
-  mounted () {
+  mounted() {
+  },
+  watch: {
+    userList(newV, oldV) {
+      this.userList = newV
+    },
+    statusOptions(v) {
+      this.statusOptions = v
+    },
+    postOptions(v) {
+      this.postOptions = v
+    },
+    roleOptions(v) {
+      this.roleOptions = v
+    },
+    deptOptions(v, vo) {
+      this.deptOptions = v
+    },
   },
   methods: {
-    addCondition () {
+    addCondition() {
       var lastNode = this.node.conditionNodes[this.node.conditionNodes.length - 1]
       var name = '条件' + this.getName(lastNode.name)
       var node = {
@@ -56,25 +100,25 @@ export default {
       }
       this.node.conditionNodes.push(node)
     },
-    getName (name) {
+    getName(name) {
       var num = parseInt(name.substring(2))
       return num + 1
     },
-    addnode (node) {
+    addnode(node) {
       // console.log('branch-wrap 新节点:')
       // console.log(node)
       this.$emit('addnode', node)
     },
-    delConditionNode (item) {
+    delConditionNode(item) {
       delConditionNode(item, this.node)
       if (this.node.conditionNodes.length < 2) {
         this.$emit('delNode')
       }
     },
-    delNode () {
+    delNode() {
       this.$emit('delNode')
     },
-    addConditionFactor (conditionNode) {
+    addConditionFactor(conditionNode) {
       setConditionFactor(conditionNode, this.node)
     }
   }

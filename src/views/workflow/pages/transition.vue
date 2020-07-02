@@ -166,11 +166,11 @@ export default {
     },
     statedata: {
       type: Array,
-      default: []
+      default: () => []
     },
     list: {
       type: Array,
-      default: []
+      default: () => []
     }
   },
   data() {
@@ -235,7 +235,7 @@ export default {
           this.checkPermission()
         })
     },
-    handleFilter() {},
+    handleFilter() { },
     resetTemp() {
       this.temp = {
         memo: '',
@@ -275,7 +275,7 @@ export default {
               })
               this.$emit('checkdata')
             })
-            .catch(() => {})
+            .catch(() => { })
         }
       })
     },
@@ -306,7 +306,7 @@ export default {
               })
               this.$emit('checkdata')
             })
-            .catch(() => {})
+            .catch(() => { })
         }
       })
     },

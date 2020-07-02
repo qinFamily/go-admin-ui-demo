@@ -1,26 +1,21 @@
 <template>
   <div class="condition-node-box">
     <div class="auto-judge node_8f5e_917f">
-      <div class="sort-left">
-        &lt;
-      </div><div class="title-wrapper">
-        <span
-          style="float:right;color: grey;"
-          @click="delConditionNode"
-        >X</span>
-        <span
-          class="editable-title"
-          data-spm-anchor-id="0.0.0.i35.2f244490ZxXSWD"
-        >{{ node.name }}</span>
+      <div class="sort-left">&lt;</div>
+      <div class="title-wrapper">
+        <span style="float:right;color: grey;" @click="delConditionNode">X</span>
+        <span class="editable-title" data-spm-anchor-id="0.0.0.i35.2f244490ZxXSWD">{{ node.name }}</span>
       </div>
-      <div
-        class="content"
-        @click="setProperties"
-      >
+      <div class="content" @click="setProperties">
         <div>{{ text1 }}</div>
       </div>
     </div>
     <AddNodeBtn
+      :userList="userList"
+      :statusOptions="statusOptions"
+      :postOptions="postOptions"
+      :roleOptions="roleOptions"
+      :deptOptions="deptOptions"
       :node="node"
       @addnode="addnode"
     />
@@ -47,13 +42,38 @@ export default {
     node: {
       type: Object,
       default: undefined
-    }
+    },
+    // 用户表格数据
+    userList: {
+      type: Array,
+      default: () => [],
+    },
+    // 状态数据字典
+    statusOptions: {
+      type: Array,
+      default: () => [],
+    },
+    // 岗位选项
+    postOptions: {
+      type: Array,
+      default: () => [],
+    },
+    // 角色选项
+    roleOptions: {
+      type: Array,
+      default: () => [],
+    },
+    // 部门选项
+    deptOptions: {
+      type: Array,
+      default: () => [],
+    },
   },
   data: () => ({
     show: false,
     text1: ''
   }),
-  mounted () {
+  mounted() {
     this.text1 = this.getText()
     if (!this.node.properties) {
       this.node.properties = {
@@ -61,25 +81,42 @@ export default {
       }
     }
   },
+  watch: {
+    userList(newV, oldV) {
+      this.userList = newV
+    },
+    statusOptions(v) {
+      this.statusOptions = v
+    },
+    postOptions(v) {
+      this.postOptions = v
+    },
+    roleOptions(v) {
+      this.roleOptions = v
+    },
+    deptOptions(v, vo) {
+      this.deptOptions = v
+    },
+  },
   methods: {
-    addnode (node) {
+    addnode(node) {
       // console.log('condition-node-box 新节点:')
       // console.log(node)
       this.$emit('addnode', node)
     },
-    delConditionNode () {
+    delConditionNode() {
       this.$emit('delConditionNode')
     },
-    setProperties () {
+    setProperties() {
       this.show = true
     },
-    setPropertiesOK (properties) {
+    setPropertiesOK(properties) {
       this.node.properties = properties
       this.$emit('addConditionFactor', this.node)
       // this.text1.set(this.getText())
       this.text1 = this.getText()
     },
-    getText () {
+    getText() {
       var text = '请设置条件'
       if (!this.node.properties) {
         return text

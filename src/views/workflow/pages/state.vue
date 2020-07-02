@@ -167,15 +167,15 @@ export default {
   props: {
     wfdata: {
       type: Object,
-      default: { }
+      default: {}
     },
     list: {
       type: Array,
-      default: []
+      default: () => []
     },
     customfieldList: {
       type: Array,
-      default: []
+      default: () => []
     }
   },
 
