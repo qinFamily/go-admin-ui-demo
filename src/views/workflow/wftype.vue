@@ -87,7 +87,7 @@
           <el-input v-model="temp.code" />
         </el-form-item>
         <el-form-item label="顺序" prop="order_id">
-          <el-input type="number" v-model="temp.order_id" />
+          <el-input v-model="temp.order_id" type="number" />
         </el-form-item>
         <el-form-item label="备注" prop="memo">
           <el-input v-model="temp.memo" />
@@ -215,11 +215,11 @@ export default {
       this.$refs['dataForm'].validate(valid => {
         if (valid) {
           this.loading = true
-          console.log(typeof (this.temp.order_id))
-          if (typeof this.temp.order_id == "string") {
-            console.log("string")
+          // console.log(typeof (this.temp.order_id))
+          if (typeof this.temp.order_id === 'string') {
+            // console.log("string")
             this.temp.order_id = Number(this.temp.order_id)
-            console.log("temp", this.temp)
+            // console.log("temp", this.temp)
           }
           workflowtype
             .requestPost(this.temp)
@@ -251,6 +251,11 @@ export default {
       this.$refs['dataForm'].validate(valid => {
         if (valid) {
           this.loading = true
+          if (typeof this.temp.order_id === 'string') {
+            // console.log("string")
+            this.temp.order_id = Number(this.temp.order_id)
+            // console.log("temp", this.temp)
+          }
           workflowtype
             .requestPut(this.temp.id, this.temp)
             .then(() => {

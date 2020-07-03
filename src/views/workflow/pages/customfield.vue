@@ -223,6 +223,9 @@ export default {
     createData() {
       this.$refs['dataForm'].validate(valid => {
         if (valid) {
+          if (typeof this.temp.order_id === 'string') {
+            this.temp.order_id = Number(this.temp.order_id)
+          }
           customfield
             .requestPost(this.temp)
             .then(response => {
@@ -250,6 +253,9 @@ export default {
     updateData() {
       this.$refs['dataForm'].validate(valid => {
         if (valid) {
+          if (typeof this.temp.order_id === 'string') {
+            this.temp.order_id = Number(this.temp.order_id)
+          }
           customfield
             .requestPut(this.temp.id, this.temp)
             .then(() => {

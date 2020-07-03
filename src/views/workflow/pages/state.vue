@@ -284,6 +284,9 @@ export default {
     createData() {
       this.$refs['dataForm'].validate(valid => {
         if (valid) {
+          if (typeof this.temp.order_id === 'string') {
+            this.temp.order_id = Number(this.temp.order_id)
+          }
           state
             .requestPost(this.temp)
             .then(response => {
@@ -311,6 +314,9 @@ export default {
     updateData() {
       this.$refs['dataForm'].validate(valid => {
         if (valid) {
+          if (typeof this.temp.order_id === 'string') {
+            this.temp.order_id = Number(this.temp.order_id)
+          }
           state
             .requestPut(this.temp.id, this.temp)
             .then(() => {
