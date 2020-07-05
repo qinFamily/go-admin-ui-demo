@@ -216,13 +216,13 @@ export default {
       },
       choice_user_list: [],
       choice_group_list: [],
-      choice_role_list: []
+      choice_role_list: [],
+      customfield_list:[]
     }
   },
   computed: {},
   created() {
     this.getMenuButton()
-    this.getCustomfieldList()
     this.selectParticipant()
   },
   methods: {
@@ -269,9 +269,9 @@ export default {
       role.requestGet().then(response => {
         this.choice_role_list = response.results
       })
-      // customfield.requestGet(this.workflow_temp).then(response => {
-      //   this.customfield_list = response.results;
-      // });
+      customfield.requestGet(this.workflow_temp).then(response => {
+        this.customfield_list = response.results;
+      });
     },
     handleCreate() {
       this.resetTemp()

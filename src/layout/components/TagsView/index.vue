@@ -70,6 +70,7 @@ export default {
       return route.path === this.$route.path
     },
     isAffix(tag) {
+      // console.log("isAffix tag.meta", JSON.stringify(tag, null, 4))
       return tag.meta && tag.meta.affix
     },
     filterAffixTags(routes, basePath = '/') {
@@ -105,6 +106,7 @@ export default {
     addTags() {
       const { name } = this.$route
       if (name) {
+        // console.log("addTags",name)
         this.$store.dispatch('tagsView/addView', this.$route)
       }
       return false

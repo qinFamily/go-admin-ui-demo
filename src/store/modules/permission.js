@@ -44,6 +44,7 @@ export function generaMenu(routes, data) {
       meta: {
         title: item.title,
         icon: item.icon,
+        hidden: item.visible !== '0',
         noCache: true
       }
     }
