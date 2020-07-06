@@ -355,9 +355,7 @@ export default {
       this.roleOptions = v
     },
     deptOptions(v, vo) {
-      console.log("addnodeapprover deptoption 1", this.deptOptions)
       this.deptOptions = v
-      console.log("addnodeapprover deptoption 2", this.deptOptions)
     },
   },
   mounted() {
@@ -474,19 +472,30 @@ export default {
       // TODO 发起请求获取数据
       return this.$parent.getPersonsOptions()
     },
+    containsDept(array, obj) {
+      for (var i = 0; i < array.length; i++) {
+        if (array[i].deptId === obj.deptId) {
+          return true;
+        }
+      }
+      return false;
+    },
     digui(deptOptions) {
       for (var p in this.userList) {
         for (var d in deptOptions) {
-          console.log("deptOptions[d]", d, deptOptions[d], "userList[p]", p, this.userList[p].deptId)
+          // console.log("deptOptions[d]", d, deptOptions[d], "userList[p]", p, this.userList[p].deptId)
           if (deptOptions[d] && deptOptions[d].deptId == this.userList[p].deptId) {
             if (deptOptions[d].children) {
-              deptOptions[d].children.push({
+              var children = {
                 "deptId": this.userList[p].userId,
                 "deptName": this.userList[p].nickName,
-              })
+              }
+              if (!this.containsDept(deptOptions[d].children, children)) {
+                deptOptions[d].children.push(children)
+              }
             }
           }
-          console.log("deptOptions[d].children", deptOptions[d].children)
+          // console.log("deptOptions[d].children", deptOptions[d].children)
           if (deptOptions[d].children) {
             this.digui(deptOptions[d].children)
             // for (var c in deptOptions[d].children) {
@@ -503,7 +512,7 @@ export default {
       if (this.formData.approve == 2) {
         this.digui(this.deptOptions)
 
-        console.log("deptOptions", JSON.stringify(this.deptOptions, null, 4))
+        // console.log("deptOptions", JSON.stringify(this.deptOptions, null, 4))
       }
     },
   }
